@@ -1,0 +1,21 @@
+Facade
+Explain how the code works.
+	The main method demonstrates first a MySQL connection and reports, then an Oracle connection and reports. It first has to establish a connection, then create the helper object to manage it, then call the generate method for each one. The main method then demonstrates the same exact functionality with only 1 line of a static method call.
+
+Explain how this Facade simplified interaction with the complex subsystem(s).
+	Instead of creating an object, and then having to manage the business of dealing with it, the facade enables the client to simply ask for what it wants. The facade handles object creation and delegation. Making the methods static also means that the main method doesn't even have an object, it just gets the functionality without the baggage.
+
+How does this code and pattern support loose coupling?
+	The facade decouples the client from the Connection object and the helper objects by acting as a go-between. Changes to one do not affect the other.
+
+Why is Facade a structural Design Pattern?
+	It deals with how object relationships and how the code is organized.
+
+How is Facade like Adapter, How is it different?
+	They both provide an interface that hides what's going on behind the curtain, but their intent is different. Adapter is for, well, adapting things, and facade is for grouping and organizing common or complex tasks into a simpler method call.
+
+When can the Factory Method Pattern supplant Facade?
+	When the intent is object creation it usually makes more sense to use the factory method pattern. A factory method can be a facade for a complicated set of instructions, but the intent is to decide the parameters for those instructions at runtime depending on the runtime context. Facade can create objects, but the pattern lends itself to making specific objects generic, so if your facade requires direct parameterization, it's probably better to go with factory method.
+
+Does your pattern adhere to the Principle of Least Knowledge/Law of Demeter (LoD)? How?
+	Facade is probably the best example of this principle we've encountered. A facade can potentially do a ton of stuff and manipulate many objects under the hood and the client doesn't need to know about anything but the facade.
