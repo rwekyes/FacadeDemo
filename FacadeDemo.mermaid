@@ -1,0 +1,30 @@
+---
+title: Facade Pattern Test Class Diagram
+---
+
+classDiagram
+    class FacadePatternTest{
+        +main() : void
+
+    }
+
+    class HelperFacade{
+        +generateReport(DBTypes, ReportTypes, String) : void
+
+    }
+
+    class MySqlHelper{
+        +getMySqlDBConnection() : Connection
+        +generateMySqlPDFReport(String, Connection) : void
+        +generateMySqlHTMLReport(String, Connection) : void
+    }
+    class OracleHelper{
+        +getOracleDBConnection() : Connection
+        +generateOraclePDFReport(String, Connection) : void
+        +generateOracleHTMLReport(String, Connection) : void
+    }
+    FacadePatternTest *-- HelperFacade : has a
+    FacadePatternTest *-- MySqlHelper : has a
+    FacadePatternTest *-- OracleHelper : has a
+    HelperFacade *-- MySqlHelper : has a
+    HelperFacade *-- OracleHelper : has a
